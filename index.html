@@ -70,6 +70,8 @@
     border: none;
     transition: all .15s ease;
   }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
   .btn-primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: #fff;
@@ -249,6 +251,8 @@
 </head>
 <body>
 
+<div class="banner">系统公告：平台运行稳定。注册通道正在维护中，新用户暂未开放注册，老用户不受影响。</div>
+
 <header>
   <div class="container nav">
     <div class="logo">
@@ -259,9 +263,12 @@
       <a href="#models">模型</a>
       <a href="#features">服务优势</a>
       <a href="#docs">接入文档</a>
-      <a href="#">价格</a>
       <a href="#">公告</a>
     </nav>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" id="btn-login">登录</button>
+      <button class="btn btn-primary" id="btn-register">注册</button>
+    </div>
   </div>
 </header>
 
@@ -275,6 +282,10 @@
         <button class="btn btn-primary btn-copy" id="btn-copy">复制</button>
       </div>
       <p>一个 Key 接入 GPT-5.6、Claude 全系模型，稳定高速、按量计费，支持流式输出，兼容 OpenAI / Anthropic 官方接口格式。</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="#docs">查看接入文档</a>
+        <a class="btn btn-ghost" href="#models">浏览模型</a>
+      </div>
       <div class="stats">
         <div><div class="num">99.9%</div><div class="label">服务可用率</div></div>
         <div><div class="num">10w+</div><div class="label">日均请求</div></div>
@@ -420,6 +431,15 @@
     } else {
       fallback();
     }
+  });
+
+  document.getElementById("btn-register").addEventListener("click", function (e) {
+    e.preventDefault();
+    toast("暂未开放注册");
+  });
+  document.getElementById("btn-login").addEventListener("click", function (e) {
+    e.preventDefault();
+    toast("控制台系统维护中");
   });
 
   // 系统维护公告弹窗：页面加载即显示，点“知道了”关闭
