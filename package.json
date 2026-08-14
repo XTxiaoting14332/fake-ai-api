@@ -1,0 +1,15 @@
+{
+  "name": "fake-ai-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "恶搞用 Fake AI API：兼容 OpenAI / Anthropic 接口，永远只返回 ascii.txt 的内容（支持流式打字机效果）。",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "GPL-3.0"
+}

@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!api).*)",
+      "destination": "/api"
+    }
+  ],
+  "functions": {
+    "api/index.js": {
+      "supportsResponseStreaming": true
+    },
+    "api/[...slug].js": {
+      "supportsResponseStreaming": true
+    }
+  }
+}
