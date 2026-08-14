@@ -70,8 +70,6 @@
     border: none;
     transition: all .15s ease;
   }
-  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
   .btn-primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: #fff;
@@ -108,6 +106,29 @@
     font-family: "SF Mono", Consolas, Menlo, monospace;
   }
   .btn-copy { padding: 6px 16px; font-size: 13px; }
+  .modal-mask {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 12, 22, .72);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 40px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+  }
+  .modal .modal-icon { font-size: 38px; margin-bottom: 14px; }
+  .modal h3 { font-size: 20px; margin-bottom: 12px; }
+  .modal p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
   .stats {
     display: flex; justify-content: center; gap: 64px;
     margin-top: 56px; flex-wrap: wrap;
@@ -228,8 +249,6 @@
 </head>
 <body>
 
-<div class="banner">系统公告：平台运行稳定。注册通道正在维护中，新用户暂未开放注册，老用户不受影响。</div>
-
 <header>
   <div class="container nav">
     <div class="logo">
@@ -243,10 +262,6 @@
       <a href="#">价格</a>
       <a href="#">公告</a>
     </nav>
-    <div class="nav-actions">
-      <button class="btn btn-ghost" id="btn-login">登录</button>
-      <button class="btn btn-primary" id="btn-register">注册</button>
-    </div>
   </div>
 </header>
 
@@ -260,10 +275,6 @@
         <button class="btn btn-primary btn-copy" id="btn-copy">复制</button>
       </div>
       <p>一个 Key 接入 GPT-5.6、Claude 全系模型，稳定高速、按量计费，支持流式输出，兼容 OpenAI / Anthropic 官方接口格式。</p>
-      <div class="btns">
-        <a class="btn btn-primary" href="#docs">查看接入文档</a>
-        <a class="btn btn-ghost" href="#models">浏览模型</a>
-      </div>
       <div class="stats">
         <div><div class="num">99.9%</div><div class="label">服务可用率</div></div>
         <div><div class="num">10w+</div><div class="label">日均请求</div></div>
@@ -369,6 +380,15 @@
   </div>
 </footer>
 
+<div class="modal-mask" id="maintain-modal">
+  <div class="modal">
+    <div class="modal-icon">🛠️</div>
+    <h3>系统维护公告</h3>
+    <p>系统正在进行维护升级，服务暂时不可用，<br>维护完成后将第一时间恢复，感谢您的理解与支持。</p>
+    <button class="btn btn-primary" id="modal-close">知道了</button>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <script>
@@ -402,13 +422,9 @@
     }
   });
 
-  document.getElementById("btn-register").addEventListener("click", function (e) {
-    e.preventDefault();
-    toast("暂未开放注册");
-  });
-  document.getElementById("btn-login").addEventListener("click", function (e) {
-    e.preventDefault();
-    toast("控制台系统维护中");
+  // 系统维护公告弹窗：页面加载即显示，点“知道了”关闭
+  document.getElementById("modal-close").addEventListener("click", function () {
+    document.getElementById("maintain-modal").style.display = "none";
   });
 </script>
 </body>
