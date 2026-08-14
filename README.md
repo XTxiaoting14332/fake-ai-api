@@ -73,7 +73,8 @@ Codex 会用 `/v1/models` 返回的列表校验模型名，因此 `model` 需在
 - `POST /v1/chat/completions`、`/v1/completions`：OpenAI
 - `POST /v1/responses`：OpenAI Responses API（Codex）
 - `POST /v1/messages`、`/v1/messages/count_tokens`：Anthropic
-- `GET /` 或 `/health`：健康检查，无需 Key
+- `GET /`：落地页（AI 中转站样式，无需 Key）
+- `GET /health`：健康检查，无需 Key
 
 接口路径带或不带 `/api` 前缀均可。
 
