@@ -91,6 +91,23 @@
   .hero p { color: var(--muted); font-size: 17px; margin: 18px auto 34px; max-width: 640px; }
   .hero .btns { display: flex; gap: 14px; justify-content: center; }
   .hero .btn { padding: 12px 28px; font-size: 15px; }
+  .base-url-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 8px 8px 16px;
+  }
+  .base-url-label { font-size: 12px; color: var(--muted); letter-spacing: .5px; }
+  .base-url-box code {
+    font-size: 14px;
+    color: var(--text);
+    font-family: "SF Mono", Consolas, Menlo, monospace;
+  }
+  .btn-copy { padding: 6px 16px; font-size: 13px; }
   .stats {
     display: flex; justify-content: center; gap: 64px;
     margin-top: 56px; flex-wrap: wrap;
@@ -237,6 +254,11 @@
   <section class="hero">
     <div class="container">
       <h1>一站式大模型 API 中转服务</h1>
+      <div class="base-url-box">
+        <span class="base-url-label">Base URL</span>
+        <code id="base-url">https://ai.n1ghtw1nd.com</code>
+        <button class="btn btn-primary btn-copy" id="btn-copy">复制</button>
+      </div>
       <p>一个 Key 接入 GPT-5.6、Claude 全系模型，稳定高速、按量计费，支持流式输出，兼容 OpenAI / Anthropic 官方接口格式。</p>
       <div class="btns">
         <a class="btn btn-primary" href="#docs">查看接入文档</a>
@@ -358,6 +380,27 @@
     clearTimeout(toastEl._timer);
     toastEl._timer = setTimeout(function () { toastEl.classList.remove("show"); }, 2200);
   }
+
+  // Base URL 复制
+  document.getElementById("btn-copy").addEventListener("click", function () {
+    var url = document.getElementById("base-url").textContent;
+    var fallback = function () {
+      var ta = document.createElement("textarea");
+      ta.value = url;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); toast("已复制"); }
+      catch (e) { toast("复制失败，请手动复制"); }
+      document.body.removeChild(ta);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () { toast("已复制"); }, fallback);
+    } else {
+      fallback();
+    }
+  });
 
   document.getElementById("btn-register").addEventListener("click", function (e) {
     e.preventDefault();
