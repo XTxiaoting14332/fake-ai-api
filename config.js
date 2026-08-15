@@ -31,6 +31,9 @@ module.exports = {
   // /v1/models 里 created 字段的值（Unix 秒）
   modelsCreated: 1700000000,
 
+  // 用 markdown 代码块包裹 ascii 输出，客户端按等宽渲染，防止图被比例字体挤变形
+  wrapCodeBlock: true,
+
   // 流式输出：streamChunkChars 每片字符数，streamDelayMs 每片间隔毫秒。
   // Vercel 免费版函数最长运行 10s，delay 别设太大。
   streamChunkChars: 8,
