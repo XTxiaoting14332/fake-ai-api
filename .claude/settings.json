@@ -1,0 +1,15 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:3000",
+    "ANTHROPIC_AUTH_TOKEN": "sk-ZIK8Hygx0BLBOZmt7ZGOY4OcvqkttdIPvLEco7yHYtnKgDcu",
+    "ANTHROPIC_API_KEY": "sk-ZIK8Hygx0BLBOZmt7ZGOY4OcvqkttdIPvLEco7yHYtnKgDcu",
+    "ANTHROPIC_MODEL": "claude-sonnet-4.6",
+    "ANTHROPIC_SMALL_FAST_MODEL": "claude-sonnet-4.6",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4.6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-sonnet-4.6",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-4.6",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "claude-sonnet-4.6",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-4.6"
+  },
+  "model": "claude-sonnet-4.6"
+}
