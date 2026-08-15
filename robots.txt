@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /v1/
 Disallow: /api/
+Sitemap: https://ai.n1ghtw1nd.com/sitemap.xml
