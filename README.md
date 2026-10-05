@@ -96,6 +96,10 @@ Codex 会用 `/v1/models` 返回的列表校验模型名，因此 `model` 需在
 
 接口路径带或不带 `/api` 前缀均可。
 
+## 鸣谢
+
+- [hlfzsi](https://github.com/hlfzsi/)：为本项目README添加了鸣谢
+
 ## License
 
 GPL-3.0
